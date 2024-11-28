@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>차량 탑승 출석 체크</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #999;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>출석 체크</h1>
+    <form id="attendanceForm">
+        <label for="date">날짜:</label>
+        <input type="text" id="date" name="date" required readonly>
+
+        <label for="studentId">학번:</label>
+        <input type="text" id="studentId" name="studentId" required>
+
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required>
+
+        <button type="submit">출석 체크하기</button>
+    </form>
+
+    <script>
+        // URL 쿼리 파라미터에서 데이터 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('date').value = urlParams.get('date') || '';
+
+        document.getElementById('attendanceForm').onsubmit = function(event) {
+            event.preventDefault();
+            alert('출석 체크가 완료되었습니다!');
+            // 여기에 서버로 데이터 전송하는 코드를 추가할 수 있습니다.
+        };
+    </script>
+</body>
+</html>
